@@ -1,17 +1,34 @@
 #include "Items.h"
 #include "Resources.h"
 
-Item::Item(ItemId _id, ItemType _type, std::string _name, std::string _description, olc::Decal* _sprite) :
+Item::Item() :
+	iid(ItemId::NONE),
+	type(ItemType::NONE),
+	name(""),
+	description(""),
+	sprite(Resources::get().bronze_coin.Decal()),
+	stackable(false),
+	amount(0),
+	amount_max(0)
+{}
+
+Item::Item(ItemId _id, ItemType _type, std::string _name, std::string _description, olc::Decal* _sprite, bool _stackable, uint32_t _amount, uint32_t _amount_max) :
 	iid(_id),
 	type(_type),
 	name(_name),
 	description(_description),
-	sprite(_sprite)
+	sprite(_sprite),
+	stackable(_stackable),
+	amount(_amount),
+	amount_max(_amount_max)
 {}
 
+std::unordered_map<ItemId, Item> ItemIndex::itemIndex;
 
 void ItemIndex::Initialize()
 {
+	Resources::get();
+
 	itemIndex = {
 		{
 			ItemId::NONE, {
@@ -19,7 +36,10 @@ void ItemIndex::Initialize()
 				ItemType::NONE,
 				"",
 				"",
-				Resources::get().bronze_coin.Decal()
+				Resources::get().empty_slot.Decal(),
+				false,
+				0,
+				0
 			}
 		},
 		{
@@ -28,7 +48,10 @@ void ItemIndex::Initialize()
 				ItemType::COLLECTABLE,
 				"Bronze Coin",
 				"Worth a little",
-				Resources::get().bronze_coin.Decal()
+				Resources::get().bronze_coin.Decal(),
+				true,
+				1,
+				25
 			}
 		},
 		{
@@ -37,31 +60,12 @@ void ItemIndex::Initialize()
 				ItemType::WEAPON,
 				"Grenade",
 				"Goes boom",
-				Resources::get().grenade.Decal()
+				Resources::get().grenade.Decal(),
+				true,
+				1,
+				5
 			}
 		}
 	};
-
-	//itemIndex[ItemId::COIN_BRONZE] = Item(
-	//	ItemId::COIN_BRONZE,
-	//	ItemType::COLLECTABLE,
-	//	"Bronze Coin",
-	//	"Worth a little",
-	//	Resources::get().cash_pickup.Decal()
-	//);
-
-	//itemIndex[ItemId::NONE][ItemStat::ID] = ItemId::NONE;
-
-	//itemIndex[ItemId::NONE] = Item(ItemId::NONE, ItemType::NONE, Resources::get().enemy_basic.Decal());
-	//itemIndex[ItemId::COIN_BRONZE] = Item(ItemId::COIN_BRONZE, ItemType::NONE, Resources::get().enemy_basic.Decal());
-	//itemIndex[ItemId::COIN_SILVER] = Item(ItemId::NONE, ItemType::NONE, Resources::get().enemy_basic.Decal());
-	//itemIndex[ItemId::COIN_GOLD] = Item(ItemId::NONE, ItemType::NONE, Resources::get().enemy_basic.Decal());
-	//itemIndex[ItemId::GREEN_LEAF] = Item(ItemId::NONE, ItemType::NONE, Resources::get().enemy_basic.Decal());
-	//itemIndex[ItemId::SMALL_HP] = Item(ItemId::NONE, ItemType::NONE, Resources::get().enemy_basic.Decal());
-	//itemIndex[ItemId::POTION] = Item(ItemId::NONE, ItemType::NONE, Resources::get().enemy_basic.Decal());
-	//itemIndex[ItemId::AMMO] = Item(ItemId::NONE, ItemType::NONE, Resources::get().enemy_basic.Decal());
-	//itemIndex[ItemId::GRENADE] = Item(ItemId::NONE, ItemType::NONE, Resources::get().enemy_basic.Decal());
-	//itemIndex[ItemId::SHIELD] = Item(ItemId::NONE, ItemType::NONE, Resources::get().enemy_basic.Decal());
-	//itemIndex[ItemId::TOTAL] = Item(ItemId::NONE, ItemType::NONE, Resources::get().enemy_basic.Decal());
 }
 

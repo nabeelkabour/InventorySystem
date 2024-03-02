@@ -19,6 +19,8 @@ public:
 	Resources& operator=(const Resources&) = delete;
 	Resources& operator=(Resources&&) = delete;
 
+	olc::Renderable slot;
+	olc::Renderable empty_slot;
 	olc::Renderable bronze_coin;
 	olc::Renderable grenade;
 };

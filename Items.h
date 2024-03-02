@@ -53,8 +53,21 @@ public:
 	std::string name;
 	std::string description;
 	olc::Decal* sprite;
+	bool stackable;
+	uint32_t amount;
+	uint32_t amount_max;
 
-	Item(ItemId _id, ItemType _type, std::string _name, std::string _description, olc::Decal* _sprite);
+	Item();
+	Item(
+		ItemId _id,
+		ItemType _type,
+		std::string _name,
+		std::string _description,
+		olc::Decal* _sprite,
+		bool _stackable,
+		uint32_t _amount,
+		uint32_t _amount_max
+	);
 };
 
 class ItemIndex
