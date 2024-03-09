@@ -13,20 +13,56 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Items">
-      <UniqueIdentifier>{ba162aa4-901a-4918-994a-add3e17e1f5c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Game">
       <UniqueIdentifier>{77d89bd2-b43b-4dac-85b0-ecccf8204362}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Inventory">
-      <UniqueIdentifier>{31a2d879-059f-4e60-a595-bfe35bda368e}</UniqueIdentifier>
     </Filter>
     <Filter Include="Resources">
       <UniqueIdentifier>{f254a164-2af3-4c15-a7d1-cd2cbbffabe1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Pickup">
+      <UniqueIdentifier>{f7bcf49d-4f9d-46a3-bd20-baee306c90ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine">
+      <UniqueIdentifier>{d00905d1-799f-4a08-b310-de532713eebf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Level">
+      <UniqueIdentifier>{0d71dcd9-0add-4282-b93c-933b48262cdd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Entities">
+      <UniqueIdentifier>{5b4d43cd-2cbe-47e9-b0d1-9a7322c45514}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Level\Levels">
+      <UniqueIdentifier>{c7d4397b-0f2f-444a-b7ec-d5d913a305f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Level\Levels\MainMenu">
+      <UniqueIdentifier>{a748471c-2ba4-42e4-8417-9f5da6a5e002}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Level\Levels\BattleArena">
+      <UniqueIdentifier>{150e2851-e632-4cb5-8147-c52e7c04400c}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Player">
       <UniqueIdentifier>{e5334aaf-5326-4920-8307-fa73a9f6529c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Entities\Actor">
+      <UniqueIdentifier>{ff68592a-5be2-4007-9c56-8ecbf81b11e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Entities\Particle">
+      <UniqueIdentifier>{620eeece-d08a-49f0-9d65-24e6715c4367}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Helper">
+      <UniqueIdentifier>{7d077177-4f6b-44f5-8284-0b88174bff8c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="InventorySystem">
+      <UniqueIdentifier>{e40362d6-c110-4759-abb7-c54f45880fc2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="InventorySystem\Inventory">
+      <UniqueIdentifier>{31a2d879-059f-4e60-a595-bfe35bda368e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="InventorySystem\Items">
+      <UniqueIdentifier>{ba162aa4-901a-4918-994a-add3e17e1f5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Player\Weapons">
+      <UniqueIdentifier>{c99ff7ff-e369-4647-a794-47fe05b10a92}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -34,10 +70,10 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Items.h">
-      <Filter>Items</Filter>
+      <Filter>InventorySystem\Items</Filter>
     </ClInclude>
     <ClInclude Include="Inventory.h">
-      <Filter>Inventory</Filter>
+      <Filter>InventorySystem\Inventory</Filter>
     </ClInclude>
     <ClInclude Include="Game.h">
       <Filter>Game</Filter>
@@ -45,8 +81,53 @@
     <ClInclude Include="Resources.h">
       <Filter>Resources</Filter>
     </ClInclude>
+    <ClInclude Include="olcPGEX_Gamepad.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Pickup.h">
+      <Filter>Pickup</Filter>
+    </ClInclude>
+    <ClInclude Include="PickupManager.h">
+      <Filter>Pickup</Filter>
+    </ClInclude>
+    <ClInclude Include="Level.h">
+      <Filter>GameEngine\Level</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>GameEngine\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="ManifestedEntity.h">
+      <Filter>GameEngine\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="MainMenu.h">
+      <Filter>GameEngine\Level\Levels\MainMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleArena.h">
+      <Filter>GameEngine\Level\Levels\BattleArena</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision.h">
+      <Filter>GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="Actor.h">
+      <Filter>GameEngine\Entities\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Particle.h">
+      <Filter>GameEngine\Entities\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="Helper.h">
+      <Filter>Helper</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleEffect.h">
+      <Filter>GameEngine\Entities\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="HitSplat.h">
+      <Filter>GameEngine\Entities\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="Grenade.h">
+      <Filter>Player\Weapons</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -57,10 +138,10 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Items.cpp">
-      <Filter>Items</Filter>
+      <Filter>InventorySystem\Items</Filter>
     </ClCompile>
     <ClCompile Include="Inventory.cpp">
-      <Filter>Inventory</Filter>
+      <Filter>InventorySystem\Inventory</Filter>
     </ClCompile>
     <ClCompile Include="Game.cpp">
       <Filter>Game</Filter>
@@ -70,6 +151,45 @@
     </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>Player</Filter>
+    </ClCompile>
+    <ClCompile Include="olcPGEX_Gamepad.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Pickup.cpp">
+      <Filter>Pickup</Filter>
+    </ClCompile>
+    <ClCompile Include="PickupManager.cpp">
+      <Filter>Pickup</Filter>
+    </ClCompile>
+    <ClCompile Include="Level.cpp">
+      <Filter>GameEngine\Level</Filter>
+    </ClCompile>
+    <ClCompile Include="ManifestedEntity.cpp">
+      <Filter>GameEngine\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="MainMenu.cpp">
+      <Filter>GameEngine\Level\Levels\MainMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleArena.cpp">
+      <Filter>GameEngine\Level\Levels\BattleArena</Filter>
+    </ClCompile>
+    <ClCompile Include="Actor.cpp">
+      <Filter>GameEngine\Entities\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Particle.cpp">
+      <Filter>GameEngine\Entities\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="Helper.cpp">
+      <Filter>Helper</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleEffect.cpp">
+      <Filter>GameEngine\Entities\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="HitSplat.cpp">
+      <Filter>GameEngine\Entities\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="Grenade.cpp">
+      <Filter>Player\Weapons</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

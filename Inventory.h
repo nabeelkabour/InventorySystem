@@ -4,17 +4,24 @@
 #include "olcPixelGameEngine.h"
 #include "Items.h"
 
-#define INV_SCALE 0.18f
-#define INV_DEFAULT_SIZE 10
+#define INV_SCALE 0.15f
+#define INV_TEXT_SCALE 7.5f
+#define INV_DEFAULT_SIZE 5
 
 class Inventory 
 {
 public:
 	std::vector<Item> inventory;
+	uint8_t size = INV_DEFAULT_SIZE;
+	int8_t selected = 0;
+	olc::Pixel borderColor = olc::RED;
 
 	Inventory();
 	void Draw(float x, float y);
 	bool GainItem(Item item);
+	void MoveSelectLeft();
+	void MoveSelectRight();
+	bool selectItem();
 };
 
 #endif

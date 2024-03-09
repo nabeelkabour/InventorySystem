@@ -9,10 +9,12 @@ Item::Item() :
 	sprite(Resources::get().bronze_coin.Decal()),
 	stackable(false),
 	amount(0),
-	amount_max(0)
+	amount_max(0),
+	use([&](Player* player) {return false; })
 {}
 
-Item::Item(ItemId _id, ItemType _type, std::string _name, std::string _description, olc::Decal* _sprite, bool _stackable, uint32_t _amount, uint32_t _amount_max) :
+Item::Item(ItemId _id, ItemType _type, std::string _name, std::string _description, olc::Decal* _sprite, bool _stackable,
+	uint32_t _amount, uint32_t _amount_max, std::function<bool(Player*)> _use) :
 	iid(_id),
 	type(_type),
 	name(_name),
@@ -20,15 +22,14 @@ Item::Item(ItemId _id, ItemType _type, std::string _name, std::string _descripti
 	sprite(_sprite),
 	stackable(_stackable),
 	amount(_amount),
-	amount_max(_amount_max)
+	amount_max(_amount_max),
+	use(_use)
 {}
 
 std::unordered_map<ItemId, Item> ItemIndex::itemIndex;
 
 void ItemIndex::Initialize()
 {
-	Resources::get();
-
 	itemIndex = {
 		{
 			ItemId::NONE, {
@@ -39,7 +40,8 @@ void ItemIndex::Initialize()
 				Resources::get().empty_slot.Decal(),
 				false,
 				0,
-				0
+				0,
+				[&](Player* player) {return false; }
 			}
 		},
 		{
@@ -51,7 +53,8 @@ void ItemIndex::Initialize()
 				Resources::get().bronze_coin.Decal(),
 				true,
 				1,
-				25
+				25,
+				[&](Player* player) {return false; }
 			}
 		},
 		{
@@ -63,7 +66,12 @@ void ItemIndex::Initialize()
 				Resources::get().grenade.Decal(),
 				true,
 				1,
-				5
+				5,
+				[&](Player* player) 
+				{
+					
+					return true; 
+				}
 			}
 		}
 	};

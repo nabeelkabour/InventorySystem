@@ -3,8 +3,9 @@
 
 #include "olcPixelGameEngine.h"
 #include "Resources.h"
+#include "Player.h"
 #include <unordered_map>
-//#include <variant> 
+#include <functional>
 
 enum class ItemId
 {
@@ -30,25 +31,10 @@ enum ItemType
 	AMMO
 };
 
-//enum ItemStat
-//{
-//	NONE,
-//	ID,
-//	TYPE,
-//	SPRITE,
-//	SPRITE_SELECTED,
-//	NAME,
-//	DESCRIPTION,
-//	STACKABLE,
-//	AMOUNT,
-//	AMOUNT_MAX,
-//	TOTAL
-//};
-
 class Item
 {
 public:
-	ItemId iid;
+	ItemId iid = ItemId::NONE;
 	ItemType type;
 	std::string name;
 	std::string description;
@@ -56,6 +42,7 @@ public:
 	bool stackable;
 	uint32_t amount;
 	uint32_t amount_max;
+	std::function<bool(Player*)> use;
 
 	Item();
 	Item(
@@ -66,7 +53,8 @@ public:
 		olc::Decal* _sprite,
 		bool _stackable,
 		uint32_t _amount,
-		uint32_t _amount_max
+		uint32_t _amount_max,
+		std::function<bool(Player*)> _use
 	);
 };
 
@@ -77,5 +65,7 @@ public:
 
 	static void Initialize();
 };
+
+
 
 #endif

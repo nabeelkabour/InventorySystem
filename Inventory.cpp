@@ -3,9 +3,6 @@
 
 Inventory::Inventory()
 {
-	Resources::get();
-	ItemIndex::Initialize();
-
 	for (uint8_t i = 0; i < INV_DEFAULT_SIZE; ++i)
 	{
 		inventory.push_back(ItemIndex::itemIndex[ItemId::NONE]);
@@ -18,18 +15,30 @@ void Inventory::Draw(float x, float y)
 	{
 		float offsetX = i * 256.f * INV_SCALE;
 
-		//game.DrawRectDecal({ x + offsetX, y }, { 256 * INV_SCALE, 256 * INV_SCALE }, olc::DARK_GREY);
-		game.DrawDecal({ x + offsetX, y }, Resources::get().slot.Decal(), { INV_SCALE, INV_SCALE }, olc::DARK_GREY);
+		olc::Pixel squareColor = olc::DARK_GREY;
+		if (i == selected)
+		{
+			squareColor = borderColor;
+
+			game.DrawStringDecal({ x, y + 256.f * INV_SCALE + 2.5f }, inventory[i].name + "\n" + inventory[i].description);
+		}
+
+		game.DrawDecal(
+			{ x + offsetX, y },
+			Resources::get().slot.Decal(),
+			{ INV_SCALE, INV_SCALE },
+			squareColor
+		);
 
 		game.DrawDecal({ x + offsetX, y }, inventory[i].sprite, { INV_SCALE, INV_SCALE });
 
 		if (inventory[i].stackable) 
 		{
 			game.DrawStringDecal(
-				{ x + offsetX + 25 * INV_SCALE, y + 256.f * INV_SCALE - 25 * INV_SCALE },
+				{ x + offsetX + 25 * INV_SCALE, y + 256.f * INV_SCALE - 256.f * INV_SCALE / 3.f },
 				std::to_string(inventory[i].amount),
 				olc::WHITE,
-				{ 10.f * INV_SCALE, 10.f * INV_SCALE });
+				{ INV_TEXT_SCALE * INV_SCALE, INV_TEXT_SCALE * INV_SCALE });
 		}
 	}
 }
@@ -88,4 +97,29 @@ bool Inventory::GainItem(Item item)
 	}
 
 	return false;
+}
+
+void Inventory::MoveSelectLeft()
+{
+	--selected;
+
+	if (selected < 0) selected = size - 1;
+}
+
+void Inventory::MoveSelectRight()
+{
+	++selected;
+
+	if (selected > (size - 1)) selected = 0;
+}
+
+bool Inventory::selectItem()
+{
+	borderColor = olc::GREEN;
+	//switch (inventory[selected].type) 
+	//{
+	//	ItemType::AMMO:
+
+	//}
+	return true;
 }

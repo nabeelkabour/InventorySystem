@@ -19,10 +19,24 @@ public:
 	Resources& operator=(const Resources&) = delete;
 	Resources& operator=(Resources&&) = delete;
 
+	//Main
+	olc::Renderable mainLogo;
+	olc::Renderable pressStart;
+	olc::Renderable playerOnePress;
+	olc::Renderable playerTwoPress;
+
+	//Inventory
 	olc::Renderable slot;
 	olc::Renderable empty_slot;
 	olc::Renderable bronze_coin;
 	olc::Renderable grenade;
+
+	//Tanks
+	olc::Renderable base;
+	olc::Renderable turret;
+
+	//Weapons
+	olc::Renderable projectileCircle;
 };
 
 
