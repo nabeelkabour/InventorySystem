@@ -60,10 +60,10 @@ void Player::Update(float fElapsedTime)
 		playerInventory.selectItem();
 	}
 
-	if (gamepad->getButton(olc::GPButtons::L1).bHeld)
+	if (gamepad->getButton(olc::GPButtons::R1).bPressed)
 	{
-		//playerInventory.inventory[playerInventory.selected].use(this);
-		//playerInventory.inventory[playerInventory.selected].amount--;
+		playerInventory.inventory[playerInventory.selected].use(this);
+		playerInventory.inventory[playerInventory.selected].amount--;
 	}
 
 	ManifestedEntity::Update(fElapsedTime);
@@ -94,7 +94,7 @@ void Player::Draw(float fElaspedTime)
 	float gamepadTurretX = gamepad->getAxis(olc::GPAxes::RX);
 	float gamepadTurretY = gamepad->getAxis(olc::GPAxes::RY);
 
-	float turretAngle = 0.f;
+	//float turretAngle = 0.f;
 
 	if (playerId == PlayerID::TWO and gamepadTurretX == 0.f and gamepadTurretY == 0.f)
 	{
@@ -150,18 +150,15 @@ void Player::Draw(float fElaspedTime)
 
 void Player::Collide(Player* player)
 {
-	static float timer = 2.f;
-	static bool canHit = true;
-	timer += game.GetElapsedTime();
+	playerCollideCooldown += game.GetElapsedTime();
 
-	if (timer >= 2.f)
+	if (playerCollideCooldown >= 2.f)
 	{
-		hp--;
-		player->hp--;
+		hp -= 15;
+		//player->hp--;
 
-		game.entitiesManifested.push_back(new HitSplat(position, 1));
-		game.entitiesManifested.push_back(new HitSplat(player->position, 1));
+		game.entitiesManifested.push_back(new HitSplat(player->position, 15));
 
-		timer = 0.f;
+		playerCollideCooldown = 0.f;
 	}
 }

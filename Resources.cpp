@@ -16,4 +16,6 @@ Resources::Resources()
 	turret.Load("./gfx/turret.png");
 
 	projectileCircle.Load("./gfx/circle.png");
+
+	explodeEffect.Load("./gfx/yellow_explode_01-sheet.png");
 }

@@ -2,6 +2,7 @@
 #include "Resources.h"
 #include "Items.h"
 #include "Inventory.h"
+#include "Particle.h"
 
 Game game;
 
@@ -15,6 +16,7 @@ bool Game::OnUserCreate()
 	srand(time(NULL));
 	
 	Resources::get();
+	Particles::get();
 	ItemIndex::Initialize();
 
 	olc::GamePad::init();

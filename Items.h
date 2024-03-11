@@ -3,9 +3,10 @@
 
 #include "olcPixelGameEngine.h"
 #include "Resources.h"
-#include "Player.h"
 #include <unordered_map>
 #include <functional>
+
+class Player;
 
 enum class ItemId
 {

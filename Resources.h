@@ -37,6 +37,9 @@ public:
 
 	//Weapons
 	olc::Renderable projectileCircle;
+
+	//Effects
+	olc::Renderable explodeEffect;
 };
 
 

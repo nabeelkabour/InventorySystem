@@ -64,6 +64,15 @@
     <Filter Include="Player\Weapons">
       <UniqueIdentifier>{c99ff7ff-e369-4647-a794-47fe05b10a92}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameEngine\Entities\Particle\HitSplat">
+      <UniqueIdentifier>{4d2c8924-fede-459f-9ad5-6ab2885cacba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Entities\Particle\AnimatedParticle">
+      <UniqueIdentifier>{ffc2f529-a1ea-4382-8010-02edb4e965ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Entities\Particle\AnimatedParticle\Explosion">
+      <UniqueIdentifier>{4cbab258-3151-4597-8166-390a75c488f6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="olcPixelGameEngine.h">
@@ -123,11 +132,17 @@
     <ClInclude Include="ParticleEffect.h">
       <Filter>GameEngine\Entities\Particle</Filter>
     </ClInclude>
-    <ClInclude Include="HitSplat.h">
-      <Filter>GameEngine\Entities\Particle</Filter>
-    </ClInclude>
     <ClInclude Include="Grenade.h">
       <Filter>Player\Weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="HitSplat.h">
+      <Filter>GameEngine\Entities\Particle\HitSplat</Filter>
+    </ClInclude>
+    <ClInclude Include="Explosion.h">
+      <Filter>GameEngine\Entities\Particle\AnimatedParticle\Explosion</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimatedParticle.h">
+      <Filter>GameEngine\Entities\Particle\AnimatedParticle</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -185,11 +200,17 @@
     <ClCompile Include="ParticleEffect.cpp">
       <Filter>GameEngine\Entities\Particle</Filter>
     </ClCompile>
-    <ClCompile Include="HitSplat.cpp">
-      <Filter>GameEngine\Entities\Particle</Filter>
-    </ClCompile>
     <ClCompile Include="Grenade.cpp">
       <Filter>Player\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="HitSplat.cpp">
+      <Filter>GameEngine\Entities\Particle\HitSplat</Filter>
+    </ClCompile>
+    <ClCompile Include="Explosion.cpp">
+      <Filter>GameEngine\Entities\Particle\AnimatedParticle\Explosion</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimatedParticle.cpp">
+      <Filter>GameEngine\Entities\Particle\AnimatedParticle</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

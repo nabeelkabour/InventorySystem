@@ -6,9 +6,22 @@
 class Grenade : public Actor
 { 
 public:
-	Grenade(olc::vf2d pos, int32_t hp, int32_t hpMax, olc::Decal* spr, std::string name = "");
-	bool CollidesWith(Actor* other);
+	olc::vf2d velocity;
+	float fuseTimer = 3.f;
+	float fuseTime = 0.f;
+	std::list<Player*> hitList;
+
+	Grenade(
+		olc::vf2d pos,
+		olc::vf2d velocity,
+		int32_t hp = 1, 
+		int32_t hpMax = 1,
+		std::string name = ""
+	);
+
+	//bool CollidesWith(Actor* other) override;
 	void Collide(Player* player) override;
+	void Update(float fElapsedTime) override;
 	void Draw(float fElapsedTime) override;
 };
 

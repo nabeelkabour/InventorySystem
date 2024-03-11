@@ -19,7 +19,6 @@ public:
 	//bool CollidesWith(Actor* other, float scaleSelf = 1.f, float scaleOther = 1.f);
 	virtual bool CollidesWith(Actor* other);
 	virtual void Collide(Player* player) = 0;
-	virtual void Draw(float fElapsedTime) = 0;
 };
 
 #endif

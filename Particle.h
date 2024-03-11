@@ -39,7 +39,7 @@ public:
 	Particle(olc::vf2d pos);
 	~Particle();
 	void Create() override;
-	void Update(float fElapsedTime);
+	void Update(float fElapsedTime) override;
 	void Draw(float fElapsedTime) override;
 };
 
@@ -60,7 +60,8 @@ public:
 	Particles& operator=(Particles&&) = delete;
 
 	//Particle effects
-	Particle* hitSplat;
+	//Particle* hitSplat;
+	static Particle* Explosion(olc::vf2d pos);
 	//static Particle* particle_smoke;
 
 	//Simple

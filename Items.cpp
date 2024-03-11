@@ -1,5 +1,9 @@
+#include "Game.h"
 #include "Items.h"
 #include "Resources.h"
+#include "ManifestedEntity.h"
+#include "Grenade.h"
+#include "Player.h"
 
 Item::Item() :
 	iid(ItemId::NONE),
@@ -69,7 +73,14 @@ void ItemIndex::Initialize()
 				5,
 				[&](Player* player) 
 				{
-					
+					// Create grenade in direction of player turret
+					ManifestedEntity* grenade = new Grenade(
+						player->position + olc::vf2d{ 32.f * cos(player->turretAngle), 32.f * sin(player->turretAngle) },
+						{ 80.f, player->turretAngle }
+					);
+
+					game.entitiesManifested.push_back(grenade);
+					game.actors.push_back((Actor*)grenade);
 					return true; 
 				}
 			}

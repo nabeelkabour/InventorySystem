@@ -21,6 +21,9 @@ public:
 	int32_t hpMax = hp;
 	float speed = 125.f;
 	olc::Pixel colorBase, colorTurret;
+	float turretAngle = 0.f;
+
+	float playerCollideCooldown = 2.f;
 
 	olc::GamePad* gamepad;
 

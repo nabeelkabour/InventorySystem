@@ -130,6 +130,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Actor.h" />
+    <ClInclude Include="AnimatedParticle.h" />
+    <ClInclude Include="Explosion.h" />
     <ClInclude Include="Grenade.h" />
     <ClInclude Include="BattleArena.h" />
     <ClInclude Include="Collision.h" />
@@ -153,6 +155,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Actor.cpp" />
+    <ClCompile Include="Explosion.cpp" />
     <ClCompile Include="Grenade.cpp" />
     <ClCompile Include="BattleArena.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -172,6 +175,7 @@
     <ClCompile Include="Resources.cpp" />
     <ClCompile Include="olcPGEX_Gamepad.cpp" />
     <ClCompile Include="Level.cpp" />
+    <ClCompile Include="AnimatedParticle.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

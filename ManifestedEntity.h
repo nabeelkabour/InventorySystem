@@ -12,6 +12,7 @@ public:
 	bool visible = true;
 	int16_t depth = 0;
 	olc::Decal* spr = nullptr;
+	uint32_t width = 0, height = 0;
 	olc::vf2d scale = { 1.f, 1.f };
 
 	ManifestedEntity(olc::vf2d pos, olc::Decal* spr = nullptr);
