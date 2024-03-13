@@ -23,7 +23,7 @@ Player::Player(PlayerID id, olc::vf2d pos, int32_t hp, int32_t hpMax, olc::Decal
 		break;
 	}
 
-	scale = { 0.1f, 0.1f };
+	scale = { 0.2f, 0.2f };
 
 	uint8_t numGrenades = 3;
 	for (uint8_t i = 0; i < 3; ++i)

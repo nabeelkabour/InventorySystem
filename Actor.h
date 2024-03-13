@@ -1,6 +1,7 @@
 #ifndef ACTOR_H
 #define ACTOR_H
 
+#include "olcUTIL_Geometry2D.h"
 #include "ManifestedEntity.h"
 #include <cstdint>
 

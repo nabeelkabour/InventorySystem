@@ -1,6 +1,7 @@
 #ifndef MANIFESTEDENTITY_H
 #define MANIFESTEDENTITY_H
 
+#include "olcUTIL_Geometry2D.h"
 #include "olcPixelGameEngine.h"
 #include "Entity.h"
 

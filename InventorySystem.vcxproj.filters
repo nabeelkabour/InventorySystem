@@ -19,9 +19,6 @@
     <Filter Include="Resources">
       <UniqueIdentifier>{f254a164-2af3-4c15-a7d1-cd2cbbffabe1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Pickup">
-      <UniqueIdentifier>{f7bcf49d-4f9d-46a3-bd20-baee306c90ce}</UniqueIdentifier>
-    </Filter>
     <Filter Include="GameEngine">
       <UniqueIdentifier>{d00905d1-799f-4a08-b310-de532713eebf}</UniqueIdentifier>
     </Filter>
@@ -72,6 +69,12 @@
     </Filter>
     <Filter Include="GameEngine\Entities\Particle\AnimatedParticle\Explosion">
       <UniqueIdentifier>{4cbab258-3151-4597-8166-390a75c488f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HitBox">
+      <UniqueIdentifier>{9fe96381-7983-4b00-a387-4d9f071bebb8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pickup">
+      <UniqueIdentifier>{f7bcf49d-4f9d-46a3-bd20-baee306c90ce}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -144,6 +147,12 @@
     <ClInclude Include="AnimatedParticle.h">
       <Filter>GameEngine\Entities\Particle\AnimatedParticle</Filter>
     </ClInclude>
+    <ClInclude Include="HitBox.h">
+      <Filter>HitBox</Filter>
+    </ClInclude>
+    <ClInclude Include="olcUTIL_Geometry2D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="olcPixelGameEngine.cpp">
@@ -211,6 +220,9 @@
     </ClCompile>
     <ClCompile Include="AnimatedParticle.cpp">
       <Filter>GameEngine\Entities\Particle\AnimatedParticle</Filter>
+    </ClCompile>
+    <ClCompile Include="HitBox.cpp">
+      <Filter>HitBox</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

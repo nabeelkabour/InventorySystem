@@ -1,6 +1,7 @@
 #ifndef PARTICLE_H
 #define PARTICLE_H
 
+#include "olcUTIL_Geometry2D.h"
 #include "ManifestedEntity.h"
 
 class Particle : public ManifestedEntity

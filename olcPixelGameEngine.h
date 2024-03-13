@@ -1,5 +1,7 @@
 ﻿#pragma once
 
+#define OLC_IGNORE_VEC2D
+
 #pragma region license_and_help
 /*
 	olcPixelGameEngine.h
@@ -11,8 +13,8 @@
 
 	What is this?
 	~~~~~~~~~~~~~
-	olc::PixelGameEngine is a single file, cross platform graphics and userinput
 	framework used for games, visualisations, algorithm exploration and learning.
+	olc::PixelGameEngine is a single file, cross platform graphics and userinput
 	It was developed by YouTuber "javidx9" as an assistive tool for many of his
 	videos. The goal of this project is to provide high speed graphics with
 	minimal project setup complexity, to encourage new programmers, younger people,

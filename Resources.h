@@ -40,6 +40,9 @@ public:
 
 	//Effects
 	olc::Renderable explodeEffect;
+
+	//Collision Masks
+	olc::Renderable explodeMask;
 };
 
 

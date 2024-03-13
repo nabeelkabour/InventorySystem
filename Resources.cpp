@@ -18,4 +18,5 @@ Resources::Resources()
 	projectileCircle.Load("./gfx/circle.png");
 
 	explodeEffect.Load("./gfx/yellow_explode_01-sheet.png");
+	explodeMask.Load("./gfx/explosionMask.png");
 }

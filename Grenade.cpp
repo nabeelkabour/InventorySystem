@@ -2,6 +2,7 @@
 #include "Grenade.h"
 #include "Resources.h"
 #include "HitSplat.h"
+#include "HitBox.h"
 
 Grenade::Grenade(olc::vf2d pos, olc::vf2d velocity, int32_t hp, int32_t hpMax, std::string name) :
 	velocity(velocity), Actor(pos, hp, hpMax, spr, name)
@@ -37,8 +38,15 @@ void Grenade::Update(float fElapsedTime)
 
 	if (fuseTime >= fuseTimer)
 	{
-		//explode (convert to explosion sprite)
-		game.entitiesManifested.push_back(Particles::Explosion(position));
+		//explode (destroy and create hitbox instance)
+		Particle* explosion = Particles::Explosion(position);
+		game.entitiesManifested.push_back(explosion);
+
+		Actor* hitBox = new HitBox(position - olc::vf2d{ 128.f / 2.f, 128.f / 2.f }, 1, 1, Resources::get().explodeMask.Decal(), 150);// explosion->life
+
+		game.entitiesManifested.push_back(hitBox);
+		game.actors.push_back(hitBox);
+
 		remove_flag = true;
 	}
 }

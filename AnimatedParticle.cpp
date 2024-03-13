@@ -5,7 +5,9 @@ AnimatedParticle::AnimatedParticle(olc::vf2d pos, uint16_t numFrames, float anim
 	Particle(pos),
 	numFrames(numFrames),
 	animationInterval(animationInterval)
-{}
+{
+	life = numFrames * animationInterval;
+}
 
 void AnimatedParticle::Update(float fElapsedTime)
 {
@@ -35,5 +37,6 @@ void AnimatedParticle::Draw(float fElapsedTime)
 		{ float(width), float(height) }
 	);
 
-	//game.DrawDecal(position, Resources::get().bronze_coin.Decal());
+	//std::cout << "I am here." << std::endl;
+	//game.FillRectDecal({ 200.f, 200.f }, {10.f, 10.f});
 }

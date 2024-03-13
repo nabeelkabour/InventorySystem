@@ -1,6 +1,7 @@
 #ifndef ANIMATEDPARTICLE_H
 #define ANIMATEDPARTICLE_H
 
+#include "olcUTIL_Geometry2D.h"
 #include "Particle.h"
 
 class AnimatedParticle : public Particle
