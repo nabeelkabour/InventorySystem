@@ -93,3 +93,22 @@ bool Game::GetGamepad(float fElapsedTime)
 
 	return false;
 }
+
+Player* Game::GetOpponent(Player* player)
+{
+	if (player == playerOne) return playerTwo;
+	return playerOne;
+}
+
+void Game::AddActor(Actor* actor)
+{
+	entitiesManifested.push_back(actor);
+	actors.push_back(actor);
+}
+
+void Game::LevelChange(Level* newLevel)
+{
+	delete levelCurrent;
+	levelCurrent = newLevel;
+	levelCurrent->Create();
+}

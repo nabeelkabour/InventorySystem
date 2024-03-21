@@ -17,7 +17,7 @@ public:
 	~Level();
 	void virtual Create();
 	void virtual Update(float fElapsedTime);
-	void LevelChange(Level* newLevel);
+	//static void LevelChange(Level* newLevel);
 };
 
 #endif

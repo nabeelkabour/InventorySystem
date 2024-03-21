@@ -17,8 +17,8 @@ class Player : public Actor
 public:
 	PlayerID playerId;
 	Inventory playerInventory;
-	int32_t hp = 300;
-	int32_t hpMax = hp;
+	float hp = 100.f;
+	float hpMax = hp;
 	float speed = 125.f;
 	olc::Pixel colorBase, colorTurret;
 	float turretAngle = 0.f;
@@ -31,6 +31,7 @@ public:
 	void Update(float fElapsedTime) override;
 	void Draw(float fElapsedTime) override;
 	void Collide(Player* player) override;
+	void Damage(float damage);
 };
 
 #endif

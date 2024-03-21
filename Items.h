@@ -18,6 +18,7 @@ enum class ItemId
 	SMALL_HP,
 	POTION,
 	AMMO,
+	AMMOSILVER,
 	GRENADE,
 	SHIELD,
 	TOTAL
@@ -43,7 +44,7 @@ public:
 	bool stackable;
 	uint32_t amount;
 	uint32_t amount_max;
-	std::function<bool(Player*)> use;
+	std::function<bool(Player*, Player*)> use;
 
 	Item();
 	Item(
@@ -55,7 +56,7 @@ public:
 		bool _stackable,
 		uint32_t _amount,
 		uint32_t _amount_max,
-		std::function<bool(Player*)> _use
+		std::function<bool(Player*, Player*)> _use
 	);
 };
 
@@ -66,7 +67,6 @@ public:
 
 	static void Initialize();
 };
-
 
 
 #endif

@@ -30,7 +30,12 @@ public:
 	bool OnUserCreate() override;
 	bool OnUserUpdate(float fElapsedTime) override;
 
+	void LevelChange(Level* newLevel);
+
+	void AddActor(Actor* actor);
+
 	bool GetGamepad(float fElaspedTime);
+	Player* GetOpponent(Player* player);
 };
 
 extern Game game;

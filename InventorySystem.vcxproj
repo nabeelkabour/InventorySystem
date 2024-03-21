@@ -132,6 +132,7 @@
     <ClInclude Include="Actor.h" />
     <ClInclude Include="AnimatedParticle.h" />
     <ClInclude Include="Explosion.h" />
+    <ClInclude Include="GameOver.h" />
     <ClInclude Include="Grenade.h" />
     <ClInclude Include="BattleArena.h" />
     <ClInclude Include="Collision.h" />
@@ -140,6 +141,7 @@
     <ClInclude Include="Helper.h" />
     <ClInclude Include="HitBox.h" />
     <ClInclude Include="HitSplat.h" />
+    <ClInclude Include="ItemLambdas.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="ManifestedEntity.h" />
@@ -153,17 +155,22 @@
     <ClInclude Include="Pickup.h" />
     <ClInclude Include="PickupManager.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="RayCast.h" />
     <ClInclude Include="Resources.h" />
+    <ClInclude Include="ShotEffect.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Actor.cpp" />
     <ClCompile Include="Explosion.cpp" />
+    <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="Grenade.cpp" />
     <ClCompile Include="BattleArena.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Helper.cpp" />
     <ClCompile Include="HitBox.cpp" />
     <ClCompile Include="HitSplat.cpp" />
+    <ClCompile Include="HpEffect.cpp" />
+    <ClCompile Include="ItemEffects.cpp" />
     <ClCompile Include="Items.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainMenu.cpp" />
@@ -175,10 +182,12 @@
     <ClCompile Include="Pickup.cpp" />
     <ClCompile Include="PickupManager.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="RayCast.cpp" />
     <ClCompile Include="Resources.cpp" />
     <ClCompile Include="olcPGEX_Gamepad.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="AnimatedParticle.cpp" />
+    <ClCompile Include="ShotEffect.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

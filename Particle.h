@@ -3,6 +3,7 @@
 
 #include "olcUTIL_Geometry2D.h"
 #include "ManifestedEntity.h"
+#include "Player.h"
 
 class Particle : public ManifestedEntity
 {
@@ -63,6 +64,8 @@ public:
 	//Particle effects
 	//Particle* hitSplat;
 	static Particle* Explosion(olc::vf2d pos);
+	static Particle* HpGain(olc::vf2d pos);
+	static Particle* ItemPickupEffect(Player* player, Item item);
 	//static Particle* particle_smoke;
 
 	//Simple

@@ -99,6 +99,17 @@ bool Inventory::GainItem(Item item)
 	return false;
 }
 
+bool Inventory::DropItem(uint8_t slotNum)
+{
+	//create drop
+
+	//game.entitiesManifested.push_back();
+
+	inventory[slotNum] = ItemIndex::itemIndex[ItemId::NONE];
+
+	return false;
+}
+
 void Inventory::MoveSelectLeft()
 {
 	--selected;

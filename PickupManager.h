@@ -1,13 +1,14 @@
 #ifndef PICKUPMANAGER_H
 #define PICKUPMANAGER_H
 
-class PickupManager
+class PickupManager : public Entity
 {
 public:
-	float spawnInterval = 10.f;
+	float spawnInterval = 2.f;
 	float spawnTimer = 0.f;
 
-	void Update(float fElapsedTime);
+	void Create() override;
+	void Update(float fElapsedTime) override;
 	void SpawnPickup();
 };
 

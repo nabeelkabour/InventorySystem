@@ -8,6 +8,8 @@ Actor::Actor(olc::vf2d pos, int32_t hp, int32_t hpMax, olc::Decal* spr, std::str
 	name(name)
 {}
 
+Actor::~Actor()
+{}
 
 //bool Actor::CollidesWith(Actor* other)
 //{	// Possibly add check for nullptr
@@ -29,10 +31,12 @@ bool Actor::CollidesWith(Actor* other)
 	//	olc::Pixel(255, 255, 255, 100)
 	//);
 
-	return other->position.x + (other->spr->sprite->width / 2.f * other->scale.x) >= position.x - (spr->sprite->width / 2.f * scale.x) and
-		other->position.x - (other->spr->sprite->width / 2.f * other->scale.x) <= position.x + (spr->sprite->width / 2.f * scale.x) and
-		other->position.y + (other->spr->sprite->height / 2.f * other->scale.y) >= position.y - spr->sprite->height / 2.f * scale.y and
-		other->position.y - (other->spr->sprite->height / 2.f * other->scale.y) <= (position.y + spr->sprite->height / 2.f * scale.y);
+	using namespace olc::utils::geom2d;
+
+	rect<float>myRect{ position - spr->sprite->Size() / 2 * scale, spr->sprite->Size() * scale };
+	rect<float>otherRect{ other->position - other->spr->sprite->Size() / 2 * other->scale, other->spr->sprite->Size() * other->scale };
+
+	return overlaps(myRect, otherRect);
 }
 
 //bool Actor::CollidesWith(Actor* other, float scaleSelf, float scaleOther)

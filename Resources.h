@@ -24,12 +24,16 @@ public:
 	olc::Renderable pressStart;
 	olc::Renderable playerOnePress;
 	olc::Renderable playerTwoPress;
+	olc::Renderable HitMarker;
 
 	//Inventory
 	olc::Renderable slot;
 	olc::Renderable empty_slot;
 	olc::Renderable bronze_coin;
 	olc::Renderable grenade;
+	olc::Renderable ammo;
+	olc::Renderable ammoSilver;
+	olc::Renderable	hpPotion;
 
 	//Tanks
 	olc::Renderable base;
@@ -40,6 +44,7 @@ public:
 
 	//Effects
 	olc::Renderable explodeEffect;
+	olc::Renderable hpGainEffect;
 
 	//Collision Masks
 	olc::Renderable explodeMask;

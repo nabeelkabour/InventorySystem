@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #define OLC_IGNORE_VEC2D
+#include "olcUTIL_Geometry2D.h"
 
 #pragma region license_and_help
 /*

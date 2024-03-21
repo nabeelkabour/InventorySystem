@@ -3,9 +3,12 @@
 
 #include "Actor.h"
 
+constexpr float grenadeDamage = 30.f;
+
 class Grenade : public Actor
 { 
 public:
+
 	olc::vf2d velocity;
 	float fuseTimer = 3.f;
 	float fuseTime = 0.f;

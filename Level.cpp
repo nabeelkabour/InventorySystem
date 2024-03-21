@@ -10,16 +10,27 @@ Level::~Level()
 	}
 	game.entities.clear();
 
+
+	std::unordered_set<const Entity*> removeSet;
+
 	for (ManifestedEntity* entity_man : game.entitiesManifested)
 	{
-		delete entity_man;
+		removeSet.insert(entity_man);
 	}
-	game.entitiesManifested.clear();
+	
 
 	for (Actor* actor : game.actors)
 	{
-		delete actor;
+		removeSet.insert(actor);
 	}
+	
+
+	for (const Entity* removeEntity : removeSet)
+	{
+		delete removeEntity;
+	}
+
+	game.entitiesManifested.clear();
 	game.actors.clear();
 }
 
@@ -101,9 +112,3 @@ void Level::Update(float fElapsedTime)
 	}
 }
 
-void Level::LevelChange(Level* newLevel)
-{
-	delete game.levelCurrent;
-	game.levelCurrent = newLevel;
-	game.levelCurrent->Create();
-}

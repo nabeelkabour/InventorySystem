@@ -10,11 +10,12 @@ Grenade::Grenade(olc::vf2d pos, olc::vf2d velocity, int32_t hp, int32_t hpMax, s
 	spr = Resources::get().grenade.Decal();
 
 	scale = { 0.1f, 0.1f };
+	collidable = false;
 }
 
 void Grenade::Draw(float fElapsedTime)
 {
-	game.DrawRotatedDecal(position, spr, velocity.y, { 256.f / 2.f, 256.f / 2.f}, { 0.1f, 0.1f });
+	game.DrawRotatedDecal(position, spr, velocity.y, { 256.f / 2.f, 256.f / 2.f}, scale);
 }
 
 olc::vf2d position, speed;
@@ -42,7 +43,7 @@ void Grenade::Update(float fElapsedTime)
 		Particle* explosion = Particles::Explosion(position);
 		game.entitiesManifested.push_back(explosion);
 
-		Actor* hitBox = new HitBox(position - olc::vf2d{ 128.f / 2.f, 128.f / 2.f }, 1, 1, Resources::get().explodeMask.Decal(), 150);// explosion->life
+		Actor* hitBox = new HitBox(position, 1, 1, Resources::get().explodeMask.Decal(), explosion->life, grenadeDamage);
 
 		game.entitiesManifested.push_back(hitBox);
 		game.actors.push_back(hitBox);
@@ -64,7 +65,7 @@ void Grenade::Collide(Player* player)
 		if (inst == player) return;
 	}
 
-	player->hp -= 30;
+	//player->hp -= 30;
 
 	game.entitiesManifested.push_back(new HitSplat(player->position, 30));
 

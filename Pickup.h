@@ -3,22 +3,45 @@
 
 #include "Player.h"
 
-class Pickup 
+class Pickup : public Actor
 {
 public:
-	float x, y;
-	float lifeTime = 7.f;
-	float removeFlag = false;
+	float life = 0.f;
+	float lifeTime = 5.f;
+	bool hovered = false;
+	float alpha = 255.f;
 
-	Pickup(float _x, float _y, float _lifeTime = 7.f);
+	Pickup(olc::vf2d pos);
+	virtual void Update(float fElapsedTime) override;
 	virtual void Effect(Player* player) = 0;
 };
 
-class HealthPickup : Pickup
+class ItemPickup : public Pickup
 {
 public:
-	HealthPickup(float _x, float _y, float _lifeTime = 7.f);
-	void Effect(Player* player) override;
+	Item item;
+
+	ItemPickup(olc::vf2d pos, Item item);
+	void Draw(float fElapsedTime);
+	void Collide(Player* player);
+	void Effect(Player* player);
 };
+
+class PowerupPickup : public Pickup
+{
+public:
+	PowerupPickup(olc::vf2d pos);
+	//void Effect(Player* player) override;
+};
+
+//class HealthPickup : public Pickup
+//{
+//public:
+//	HealthPickup(olc::vf2d pos);
+//	void Effect(Player* player) override;
+//	bool CollidesWith(Actor* other) override;
+//	void Collide(Player* player) override;
+//	void Draw(float fElapsedTime) override;
+//};
 
 #endif

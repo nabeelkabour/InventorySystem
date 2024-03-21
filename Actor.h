@@ -17,6 +17,7 @@ public:
 	bool collidable = true;
 
 	Actor(olc::vf2d pos, int32_t hp, int32_t hpMax, olc::Decal* spr, std::string name = "");
+	~Actor();
 	//bool CollidesWith(Actor* other, float scaleSelf = 1.f, float scaleOther = 1.f);
 	virtual bool CollidesWith(Actor* other);
 	virtual void Collide(Player* player) = 0;

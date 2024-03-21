@@ -4,6 +4,8 @@
 #include "Collision.h"
 #include "HitSplat.h"
 #include "Items.h"
+#include "Pickup.h"
+#include "GameOver.h"
 
 Player::Player(PlayerID id, olc::vf2d pos, int32_t hp, int32_t hpMax, olc::Decal* spr, olc::GamePad* _gamepad, std::string name) : 
 	Actor(pos, hp, hpMax, spr, name),
@@ -25,7 +27,7 @@ Player::Player(PlayerID id, olc::vf2d pos, int32_t hp, int32_t hpMax, olc::Decal
 
 	scale = { 0.2f, 0.2f };
 
-	uint8_t numGrenades = 3;
+	uint8_t numGrenades = 4;
 	for (uint8_t i = 0; i < 3; ++i)
 	{
 		if (playerInventory.GainItem(ItemIndex::itemIndex[ItemId::GRENADE]))
@@ -39,6 +41,9 @@ Player::Player(PlayerID id, olc::vf2d pos, int32_t hp, int32_t hpMax, olc::Decal
 			break;
 		}
 	}
+
+	playerInventory.GainItem(ItemIndex::itemIndex[ItemId::AMMOSILVER]);
+	playerInventory.GainItem(ItemIndex::itemIndex[ItemId::AMMO]);
 }
 
 void Player::Update(float fElapsedTime)
@@ -60,10 +65,28 @@ void Player::Update(float fElapsedTime)
 		playerInventory.selectItem();
 	}
 
-	if (gamepad->getButton(olc::GPButtons::R1).bPressed)
+	if (gamepad->getButton(olc::GPButtons::R2).bPressed)
 	{
-		playerInventory.inventory[playerInventory.selected].use(this);
-		playerInventory.inventory[playerInventory.selected].amount--;
+		if (playerInventory.inventory[playerInventory.selected].amount > 0)
+		{
+			playerInventory.inventory[playerInventory.selected].use(this, game.GetOpponent(this));
+
+			playerInventory.inventory[playerInventory.selected].amount--;
+			if (playerInventory.inventory[playerInventory.selected].amount <= 0)
+			{
+				playerInventory.inventory[playerInventory.selected] = ItemIndex::itemIndex[ItemId::NONE];
+			}
+		}
+	}
+
+	if (gamepad->getButton(olc::GPButtons::FACE_R).bPressed)
+	{
+		//Create item and empty slot.
+		Actor* dropItem = new ItemPickup(position, playerInventory.inventory[playerInventory.selected]);
+		game.entitiesManifested.push_back(dropItem);
+		game.actors.push_back(dropItem);
+
+		playerInventory.inventory[playerInventory.selected] = ItemIndex::itemIndex[ItemId::NONE];
 	}
 
 	ManifestedEntity::Update(fElapsedTime);
@@ -76,7 +99,10 @@ void Player::Update(float fElapsedTime)
 	olc::vf2d vel = velocity;
 	if (velocityMag > 1.f) vel = velocity.norm();
 	position += vel * fElapsedTime * speed;
-
+	if (position.x > game.ScreenWidth()) position.x = float(game.ScreenWidth());
+	if (position.x < 0.f) position.x = 0.f;
+	if (position.y > game.ScreenHeight()) position.y = float(game.ScreenHeight());
+	if (position.y < 0.f) position.y = 0.f;
 
 	for (Actor* other : game.actors)
 	{
@@ -154,11 +180,21 @@ void Player::Collide(Player* player)
 
 	if (playerCollideCooldown >= 2.f)
 	{
-		hp -= 15;
+		player->Damage(15.f);
 		//player->hp--;
 
 		game.entitiesManifested.push_back(new HitSplat(player->position, 15));
 
 		playerCollideCooldown = 0.f;
+	}
+}
+
+void Player::Damage(float damage)
+{
+	hp -= damage;
+
+	if (hp <= 0.f)
+	{
+		game.LevelChange(new LMainMenu);
 	}
 }

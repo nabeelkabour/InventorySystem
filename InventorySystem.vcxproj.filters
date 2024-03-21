@@ -55,9 +55,6 @@
     <Filter Include="InventorySystem\Inventory">
       <UniqueIdentifier>{31a2d879-059f-4e60-a595-bfe35bda368e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="InventorySystem\Items">
-      <UniqueIdentifier>{ba162aa4-901a-4918-994a-add3e17e1f5c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Player\Weapons">
       <UniqueIdentifier>{c99ff7ff-e369-4647-a794-47fe05b10a92}</UniqueIdentifier>
     </Filter>
@@ -75,6 +72,18 @@
     </Filter>
     <Filter Include="Pickup">
       <UniqueIdentifier>{f7bcf49d-4f9d-46a3-bd20-baee306c90ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="InventorySystem\Items">
+      <UniqueIdentifier>{ba162aa4-901a-4918-994a-add3e17e1f5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HitBox\RayCast">
+      <UniqueIdentifier>{3bcb9b35-470f-4639-a9cc-9613d13b5968}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Entities\Particle\ShotEffect">
+      <UniqueIdentifier>{116d9317-5276-4fbb-b891-c666f98de94e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Level\Levels\GameOver">
+      <UniqueIdentifier>{70642d6e-c193-4f9d-819a-c14a9f007738}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -153,6 +162,18 @@
     <ClInclude Include="olcUTIL_Geometry2D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ItemLambdas.h">
+      <Filter>InventorySystem\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="RayCast.h">
+      <Filter>HitBox\RayCast</Filter>
+    </ClInclude>
+    <ClInclude Include="ShotEffect.h">
+      <Filter>GameEngine\Entities\Particle\ShotEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOver.h">
+      <Filter>GameEngine\Level\Levels\GameOver</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="olcPixelGameEngine.cpp">
@@ -223,6 +244,21 @@
     </ClCompile>
     <ClCompile Include="HitBox.cpp">
       <Filter>HitBox</Filter>
+    </ClCompile>
+    <ClCompile Include="RayCast.cpp">
+      <Filter>HitBox\RayCast</Filter>
+    </ClCompile>
+    <ClCompile Include="ShotEffect.cpp">
+      <Filter>GameEngine\Entities\Particle\ShotEffect</Filter>
+    </ClCompile>
+    <ClCompile Include="HpEffect.cpp">
+      <Filter>GameEngine\Entities\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemEffects.cpp">
+      <Filter>GameEngine\Entities\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="GameOver.cpp">
+      <Filter>GameEngine\Level\Levels\GameOver</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
