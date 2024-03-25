@@ -6,8 +6,16 @@
 #include "olcPixelGameEngine.h"
 #include "HitSplat.h"
 #include "ShotEffect.h"
+#include "MuzzleFlash.h"
+#include "Player.h"
+#include "Missile.h"
 
 using namespace olc::utils::geom2d;
+
+auto lambdaItemVoid = [&](Player* playerCalling, Player* playerOther) 
+{
+	return false; 
+};
 
 auto lambdaHpPotion = [&](Player* playerCalling, Player* playerOther)
 {
@@ -61,13 +69,12 @@ auto lambdaAmmo = [&](Player* playerCalling, Player* playerOther)
 			effectEndPoint = points[0];
 		}
 
-
-
 		playerOther->Damage(15.f);
 		game.entitiesManifested.push_back(new HitSplat(playerOther->position, 15));
 	}
 
 	game.entitiesManifested.push_back(new ShotEffect(turretPoint, effectEndPoint, color, hitFlag));
+	game.entitiesManifested.push_back(new MuzzleFlashParticle(turretPoint, 3, playerCalling->turretAngle));
 
 	return true;
 };
@@ -106,8 +113,25 @@ auto lambdaAmmoSilver = [&](Player* playerCalling, Player* playerOther)
 	}
 
 	game.entitiesManifested.push_back(new ShotEffect(turretPoint, effectEndPoint, color, hitFlag));
+	game.entitiesManifested.push_back(new MuzzleFlashParticle(turretPoint, 3, playerCalling->turretAngle));
 
 	return true;
 };
 
+auto lambdaMissile = [&](Player* playerCalling, Player* playerOther)
+{	
+	ManifestedEntity* missile = new Missile(
+		playerCalling->position + olc::vf2d{ 256.f, playerCalling->turretAngle }.cart() * playerCalling->scale,
+		{ 250.f, playerCalling->turretAngle },
+		1,
+		1,
+		Resources::get().rocketBasic.Decal(),
+		playerOther,
+		playerCalling
+	);
+
+	game.entitiesManifested.push_back(missile);
+	game.actors.push_back((Actor*)missile);
+	return true;
+};
 #endif

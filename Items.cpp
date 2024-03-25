@@ -67,20 +67,6 @@ void ItemIndex::Initialize()
 			}
 		},
 		{
-			ItemId::COIN_BRONZE,
-			{
-				ItemId::COIN_BRONZE,
-				ItemType::COLLECTABLE,
-				"Bronze Coin",
-				"Worth a little",
-				Resources::get().bronze_coin.Decal(),
-				true,
-				1,
-				25,
-				[&](Player* playerCalling, Player* playerOther) {return false; }
-			}
-		},
-		{
 			ItemId::GRENADE,
 			{
 				ItemId::GRENADE,
@@ -122,7 +108,35 @@ void ItemIndex::Initialize()
 				lambdaAmmoSilver
 			}
 		
+		},
+		{
+			ItemId::MISSILE,
+			{
+				ItemId::MISSILE,
+				ItemType::WEAPON,
+				"Homing missile",
+				"missile",
+				Resources::get().rocketBasic.Decal(),
+				true,
+				2,
+				6,
+				lambdaMissile
+			}
 		}
+		//{
+		//	ItemId::SHIELD,
+		//	{
+		//		ItemId::SHIELD,
+		//		ItemType::WEAPON,
+		//		"Shield",
+		//		"heavy duty",
+		//		Resources::get().base.Decal(),
+		//		false,
+		//		1,
+		//		1,
+		//		lambdaItemVoid
+		//	}
+		//}
 	};
 }
 

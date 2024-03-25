@@ -12,8 +12,8 @@ class Actor : public ManifestedEntity
 {
 public:
 	std::string name = "";
-	int32_t hp;
-	int32_t hpMax;
+	float hp;
+	float hpMax;
 	bool collidable = true;
 
 	Actor(olc::vf2d pos, int32_t hp, int32_t hpMax, olc::Decal* spr, std::string name = "");

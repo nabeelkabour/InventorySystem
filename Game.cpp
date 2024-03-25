@@ -47,9 +47,11 @@ bool Game::OnUserUpdate(float fElapsedTime)
 {
 	Clear(olc::BLACK);
 
-	if(GetGamepad(fElapsedTime)) return true;
+	if (GetGamepad(fElapsedTime)) return true;
 
-	levelCurrent->Update(fElapsedTime);
+	levelCurrent->Update(fElapsedTime * timeMultiplier);
+
+	LevelChange();
 
 	return true;
 }
@@ -106,9 +108,14 @@ void Game::AddActor(Actor* actor)
 	actors.push_back(actor);
 }
 
-void Game::LevelChange(Level* newLevel)
+void Game::LevelChange()//Level* newLevel)
 {
-	delete levelCurrent;
-	levelCurrent = newLevel;
-	levelCurrent->Create();
+	if (levelChange)
+	{
+		delete levelCurrent;
+		levelCurrent = levelChange;
+		levelCurrent->Create();
+
+		levelChange = nullptr;
+	}
 }

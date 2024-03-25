@@ -5,6 +5,8 @@
 #include "ManifestedEntity.h"
 #include "Player.h"
 
+class ParticleEffect;
+
 class Particle : public ManifestedEntity
 {
 public:
@@ -64,14 +66,24 @@ public:
 	//Particle effects
 	//Particle* hitSplat;
 	static Particle* Explosion(olc::vf2d pos);
+	static Particle* ExhaustSmoke(olc::vf2d pos);
+	static Particle* ExplosionCenter(olc::vf2d pos);
+	static Particle* MuzzleFlash(olc::vf2d polar);
 	static Particle* HpGain(olc::vf2d pos);
 	static Particle* ItemPickupEffect(Player* player, Item item);
+	static Particle* InventoryFullEffect(Player* player);
+
+	static Particle* TelePartOne(olc::vf2d pos);
+	static Particle* TelePartRing(olc::vf2d pos);
+	static Particle* TelePartRingIn(olc::vf2d pos);
 	//static Particle* particle_smoke;
 
 	//Simple
 
 	//Compound
 	//static ParticleEffect* create_explosion_effect(float _x, float _y);
+	static ParticleEffect* TeleportEffect(olc::vf2d pos);
+	static ParticleEffect* PlayerDeathEffect(olc::vf2d pos);
 };
 
 #endif

@@ -32,11 +32,9 @@ void AnimatedParticle::Draw(float fElapsedTime)
 		position,
 		spr,
 		orientation,
-		{ float(width) / 2.f, float(height) / 2.f},
+		{ float(width) / 2.f, float(height) / 2.f },
 		source_pos,
-		{ float(width), float(height) }
+		{ float(width), float(height) },
+		{ xscale, yscale }
 	);
-
-	//std::cout << "I am here." << std::endl;
-	//game.FillRectDecal({ 200.f, 200.f }, {10.f, 10.f});
 }

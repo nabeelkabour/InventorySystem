@@ -7,9 +7,14 @@ class Pickup : public Actor
 {
 public:
 	float life = 0.f;
-	float lifeTime = 5.f;
+	float lifeTime = 3.f;
+	float lifeEffect = 4.f;
 	bool hovered = false;
 	float alpha = 255.f;
+	float decayTimer = 0.f;
+	float growTime = 0.5f;
+	bool grown = false;
+	olc::vf2d scaleSpawn = { 0.f, 0.f };
 
 	Pickup(olc::vf2d pos);
 	virtual void Update(float fElapsedTime) override;
@@ -22,16 +27,9 @@ public:
 	Item item;
 
 	ItemPickup(olc::vf2d pos, Item item);
-	void Draw(float fElapsedTime);
+	void Draw(float fElapsedTime) override;
 	void Collide(Player* player);
-	void Effect(Player* player);
-};
-
-class PowerupPickup : public Pickup
-{
-public:
-	PowerupPickup(olc::vf2d pos);
-	//void Effect(Player* player) override;
+	void Effect(Player* player) override;
 };
 
 //class HealthPickup : public Pickup

@@ -6,7 +6,9 @@ ShotEffect::ShotEffect(olc::vf2d pos, olc::vf2d endPos, olc::Pixel color, bool h
 	endPoint(endPos),
 	color(color),
 	hit(hit)
-{}
+{
+	depth = -100000;
+}
 
 
 void ShotEffect::Update(float fElapsedTime)

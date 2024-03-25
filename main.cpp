@@ -3,7 +3,7 @@
 
 int main()
 {
-	if (game.Construct(720, 405, 3, 3))
+	if (game.Construct(SCREENWIDTH, SCREENHEIGHT, 3, 3))
 		game.Start();
 
 	return 0;

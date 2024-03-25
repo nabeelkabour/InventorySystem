@@ -2,6 +2,7 @@
 #include "BattleArena.h"
 #include "PickupManager.h"
 #include "Pickup.h"
+#include "GameOver.h"
 
 void LBattleArena::Create()
 {
@@ -26,4 +27,13 @@ void LBattleArena::Create()
 void LBattleArena::Update(float fElapsedTime)
 {
 	Level::Update(fElapsedTime);
+
+	//if (game.playerOne->hp <= 0)
+	//{
+	//	game.LevelChange(new GameOver);
+	//}
+	//else if (game.playerTwo->hp <= 0)
+	//{
+	//	game.LevelChange(new GameOver);
+	//}
 }

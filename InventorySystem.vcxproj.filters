@@ -1,10 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
     <Filter Include="Header Files">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
@@ -85,6 +81,22 @@
     <Filter Include="GameEngine\Level\Levels\GameOver">
       <UniqueIdentifier>{70642d6e-c193-4f9d-819a-c14a9f007738}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Pickup\Poweups">
+      <UniqueIdentifier>{6d0bbbaf-9b7d-446a-8a46-7f1a8543dbed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="GameEngine\Entities\Particle\AnimatedParticle\MuzzleFlash">
+      <UniqueIdentifier>{7e692e65-505d-4649-98fd-06623ccb87f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Player\Weapons\Missile">
+      <UniqueIdentifier>{dd6043e8-ea26-4c03-8781-1c3dd2f73a55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Entities\Particle\Exhaust">
+      <UniqueIdentifier>{cec7ec71-3add-4581-af89-d83bd8d86d00}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="olcPixelGameEngine.h">
@@ -144,9 +156,6 @@
     <ClInclude Include="ParticleEffect.h">
       <Filter>GameEngine\Entities\Particle</Filter>
     </ClInclude>
-    <ClInclude Include="Grenade.h">
-      <Filter>Player\Weapons</Filter>
-    </ClInclude>
     <ClInclude Include="HitSplat.h">
       <Filter>GameEngine\Entities\Particle\HitSplat</Filter>
     </ClInclude>
@@ -171,8 +180,32 @@
     <ClInclude Include="ShotEffect.h">
       <Filter>GameEngine\Entities\Particle\ShotEffect</Filter>
     </ClInclude>
+    <ClInclude Include="PowerupPickup.h">
+      <Filter>Pickup\Poweups</Filter>
+    </ClInclude>
+    <ClInclude Include="PickupLambdas.h">
+      <Filter>Pickup\Poweups</Filter>
+    </ClInclude>
+    <ClInclude Include="Buff.h">
+      <Filter>GameEngine\Entities</Filter>
+    </ClInclude>
     <ClInclude Include="GameOver.h">
       <Filter>GameEngine\Level\Levels\GameOver</Filter>
+    </ClInclude>
+    <ClInclude Include="Shield.h">
+      <Filter>Player</Filter>
+    </ClInclude>
+    <ClInclude Include="MuzzleFlash.h">
+      <Filter>GameEngine\Entities\Particle\AnimatedParticle\MuzzleFlash</Filter>
+    </ClInclude>
+    <ClInclude Include="Missile.h">
+      <Filter>Player\Weapons\Missile</Filter>
+    </ClInclude>
+    <ClInclude Include="Grenade.h">
+      <Filter>Player\Weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="WinEffect.h">
+      <Filter>GameEngine\Entities</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -259,6 +292,36 @@
     </ClCompile>
     <ClCompile Include="GameOver.cpp">
       <Filter>GameEngine\Level\Levels\GameOver</Filter>
+    </ClCompile>
+    <ClCompile Include="PowerupPickup.cpp">
+      <Filter>Pickup\Poweups</Filter>
+    </ClCompile>
+    <ClCompile Include="Buff.cpp">
+      <Filter>GameEngine\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Shield.cpp">
+      <Filter>Player</Filter>
+    </ClCompile>
+    <ClCompile Include="TeleportParticle.cpp">
+      <Filter>GameEngine\Entities\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="MuzzleFlash.cpp">
+      <Filter>GameEngine\Entities\Particle\AnimatedParticle\MuzzleFlash</Filter>
+    </ClCompile>
+    <ClCompile Include="Missile.cpp">
+      <Filter>Player\Weapons\Missile</Filter>
+    </ClCompile>
+    <ClCompile Include="Exhaust.cpp">
+      <Filter>GameEngine\Entities\Particle\Exhaust</Filter>
+    </ClCompile>
+    <ClCompile Include="Explosions.cpp">
+      <Filter>GameEngine\Entities\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="WinEffect.cpp">
+      <Filter>GameEngine\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerDeathEffect.cpp">
+      <Filter>GameEngine\Entities\Particle</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

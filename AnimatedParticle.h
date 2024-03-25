@@ -4,6 +4,12 @@
 #include "olcUTIL_Geometry2D.h"
 #include "Particle.h"
 
+//enum class SpriteSheetOrientation
+//{
+//	HORIZONTAL,
+//	VERTICAL
+//};
+
 class AnimatedParticle : public Particle
 {
 public:

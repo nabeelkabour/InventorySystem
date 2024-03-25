@@ -6,6 +6,7 @@
 #include "Items.h"
 #include "Pickup.h"
 #include "GameOver.h"
+#include "WinEffect.h"
 
 Player::Player(PlayerID id, olc::vf2d pos, int32_t hp, int32_t hpMax, olc::Decal* spr, olc::GamePad* _gamepad, std::string name) : 
 	Actor(pos, hp, hpMax, spr, name),
@@ -26,11 +27,12 @@ Player::Player(PlayerID id, olc::vf2d pos, int32_t hp, int32_t hpMax, olc::Decal
 	}
 
 	scale = { 0.2f, 0.2f };
+	depth = 9999;
 
 	uint8_t numGrenades = 4;
 	for (uint8_t i = 0; i < 3; ++i)
 	{
-		if (playerInventory.GainItem(ItemIndex::itemIndex[ItemId::GRENADE]))
+		if (playerInventory.GainItem(ItemIndex::itemIndex[ItemId::MISSILE]))
 		{
 			--numGrenades;
 		}
@@ -65,7 +67,7 @@ void Player::Update(float fElapsedTime)
 		playerInventory.selectItem();
 	}
 
-	if (gamepad->getButton(olc::GPButtons::R2).bPressed)
+	if (gamepad->getButton(olc::GPButtons::R1).bPressed)
 	{
 		if (playerInventory.inventory[playerInventory.selected].amount > 0)
 		{
@@ -195,6 +197,19 @@ void Player::Damage(float damage)
 
 	if (hp <= 0.f)
 	{
-		game.LevelChange(new LMainMenu);
+		game.entitiesManifested.push_back(Particles::PlayerDeathEffect(position));
+		game.entitiesManifested.push_back(new WinEffect(game.GetOpponent(this)));
+
+		remove_flag = true;
+		//switch (playerId)
+		//{
+		//case PlayerID::ONE:
+		//	game.levelChange = new GameOverTwo;
+		//	break;
+
+		//case PlayerID::TWO:
+		//	game.levelChange = new GameOverOne;
+		//	break;
+		//}
 	}
 }

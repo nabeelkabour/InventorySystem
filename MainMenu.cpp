@@ -30,7 +30,7 @@ void LMainMenu::Update(float fElapsedTime)
 
 	if (game.gamepadOne->getButton(olc::GPButtons::START).bPressed or game.gamepadTwo->getButton(olc::GPButtons::START).bPressed)
 	{
-		game.LevelChange(new LBattleArena);
+		game.levelChange = new LBattleArena;
 	}
 
 	if (showStartTime >= 3.5f)

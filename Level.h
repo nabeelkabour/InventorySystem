@@ -13,6 +13,7 @@ public:
 	std::list<Entity*> entitiesLevel;
 	std::list<ManifestedEntity*> entitiesManifestedLevel;
 	std::list<Actor*> actorsLevel;
+	bool levelRemoveFlag = false;
 
 	~Level();
 	void virtual Create();

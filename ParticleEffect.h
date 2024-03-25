@@ -4,6 +4,8 @@
 #include "ManifestedEntity.h"
 #include "Particle.h"
 
+class Particle;
+
 class ParticleEffect : public ManifestedEntity
 {
 public:

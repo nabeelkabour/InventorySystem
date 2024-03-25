@@ -1,5 +1,6 @@
 #include "Level.h"
 #include "Game.h"
+#include "Entity.h"
 #include <unordered_set>
 
 Level::~Level()
@@ -11,7 +12,7 @@ Level::~Level()
 	game.entities.clear();
 
 
-	std::unordered_set<const Entity*> removeSet;
+	std::unordered_set<Entity*> removeSet;
 
 	for (ManifestedEntity* entity_man : game.entitiesManifested)
 	{
@@ -25,9 +26,9 @@ Level::~Level()
 	}
 	
 
-	for (const Entity* removeEntity : removeSet)
+	for (Entity* removeEntity : removeSet)
 	{
-		delete removeEntity;
+		removeEntity->remove_flag = true;
 	}
 
 	game.entitiesManifested.clear();
@@ -76,6 +77,19 @@ void Level::Update(float fElapsedTime)
 		man_entity->Update(fElapsedTime);
 	}
 
+	game.entities.remove_if([&](const Entity* entity)
+		{
+			if (entity->remove_flag)
+			{
+				delete entity;
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		});
+
 	std::unordered_set<const Entity*> removeSet;
 
 	game.entitiesManifested.remove_if([&](const Entity* entity)
@@ -110,5 +124,7 @@ void Level::Update(float fElapsedTime)
 	{
 		delete removeEntity;
 	}
+
+
 }
 

@@ -3,6 +3,8 @@
 
 #include "olcPixelGameEngine.h"
 
+#define SCALE_256 0.25f
+
 class Resources
 {
 	Resources();
@@ -24,7 +26,9 @@ public:
 	olc::Renderable pressStart;
 	olc::Renderable playerOnePress;
 	olc::Renderable playerTwoPress;
-	olc::Renderable HitMarker;
+
+	olc::Renderable playerOneWins;
+	olc::Renderable playerTwoWins;
 
 	//Inventory
 	olc::Renderable slot;
@@ -41,13 +45,29 @@ public:
 
 	//Weapons
 	olc::Renderable projectileCircle;
+	olc::Renderable rocketBasic;
 
 	//Effects
 	olc::Renderable explodeEffect;
 	olc::Renderable hpGainEffect;
+	olc::Renderable inventoryFullEffect;
+	olc::Renderable muzzleFlash;
+	olc::Renderable muzzleFlashMirrored;
+	olc::Renderable crosshair;
 
 	//Collision Masks
 	olc::Renderable explodeMask;
+	olc::Renderable HitMarker;
+
+	//Powerups
+	olc::Renderable speedPowerup;
+	olc::Renderable swapPowerup;
+
+	//Particles
+	olc::Renderable PartRing;
+	olc::Renderable PartCircle;
+	olc::Renderable PartSmoke;
+	olc::Renderable PartExplosionCenter;
 };
 
 

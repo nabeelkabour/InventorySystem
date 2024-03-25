@@ -11,20 +11,21 @@ class Player;
 enum class ItemId
 {
 	NONE,
-	COIN_BRONZE,
-	COIN_SILVER,
-	COIN_GOLD,
-	GREEN_LEAF,
-	SMALL_HP,
+	//COIN_BRONZE,
+	//COIN_SILVER,
+	//COIN_GOLD,
+	//GREEN_LEAF,
+	//SMALL_HP,
 	POTION,
 	AMMO,
 	AMMOSILVER,
 	GRENADE,
-	SHIELD,
+	MISSILE,
+	//SHIELD,
 	TOTAL
 };
 
-enum ItemType
+enum class ItemType
 {
 	NONE,
 	COLLECTABLE,

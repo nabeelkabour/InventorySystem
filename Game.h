@@ -8,6 +8,9 @@
 #include "ManifestedEntity.h"
 #include "MainMenu.h"
 
+#define SCREENWIDTH 720
+#define SCREENHEIGHT 405
+
 class Game : public olc::PixelGameEngine
 {
 public:
@@ -17,6 +20,7 @@ public:
 	olc::GamePad* gamepadTwo = nullptr;
 
 	Level* levelCurrent = new LMainMenu;
+	Level* levelChange = nullptr;
 
 	PickupManager* pickupManager = nullptr;
 
@@ -26,11 +30,13 @@ public:
 	std::list<ManifestedEntity*> entitiesManifested;
 	std::list<Actor*> actors;
 
+	float timeMultiplier = 1.f;
+
 	Game();
 	bool OnUserCreate() override;
 	bool OnUserUpdate(float fElapsedTime) override;
 
-	void LevelChange(Level* newLevel);
+	void LevelChange();// Level* newLevel);
 
 	void AddActor(Actor* actor);
 

@@ -14,11 +14,24 @@ void Pickup::Update(float fElapsedTime)
 	Actor::Update(fElapsedTime);
 
 	float decayLife = 0.8f * lifeTime;
+	float decayTime = lifeTime - decayLife;
 
 	if (life >= decayLife)
 	{
-		float progress = life / lifeTime;
+		float progress = decayTimer / decayTime;
 		alpha = Lerp(255.f, 0.f, progress);
+		decayTimer += fElapsedTime;
+	}
+
+	if (life < growTime)
+	{
+		float progress = life / growTime;
+		float scaleActual = Lerp(0.f, SCALE_256, progress);
+		scale = { scaleActual, scaleActual };
+	}
+	else
+	{
+		grown = true;
 	}
 
 	life += fElapsedTime;
@@ -29,7 +42,7 @@ void Pickup::Update(float fElapsedTime)
 ItemPickup::ItemPickup(olc::vf2d pos, Item item) : Pickup(pos), item(item)
 {
 	spr = item.sprite;
-	scale = { 0.25f, 0.25f };
+	scale = scaleSpawn;
 }
 
 void ItemPickup::Draw(float fElapsedTime)
@@ -43,12 +56,12 @@ void ItemPickup::Draw(float fElapsedTime)
 		olc::Pixel(255, 255, 255, uint8_t(alpha))
 	);
 
-	scale = { 0.25f, 0.25f };
+	if(grown) scale = { SCALE_256, SCALE_256 };
 }
 
 void ItemPickup::Collide(Player* player)
 {
-	scale = { 0.35f, 0.35f };
+	if(grown) scale = { 0.35f, 0.35f };
 
 	if (player->gamepad->getButton(olc::GPButtons::FACE_L).bPressed)
 	{
@@ -56,6 +69,10 @@ void ItemPickup::Collide(Player* player)
 		{
 			Effect(player);
 			remove_flag = true;
+		}
+		else
+		{
+			game.entitiesManifested.push_back(Particles::InventoryFullEffect(player));
 		}
 	}
 }
@@ -66,6 +83,3 @@ void ItemPickup::Effect(Player* player)
 
 	remove_flag = true;
 }
-
-PowerupPickup::PowerupPickup(olc::vf2d pos) : Pickup(pos)
-{}
